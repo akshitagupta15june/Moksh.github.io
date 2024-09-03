@@ -1,31 +1,30 @@
-let dropMenuLinks = document.querySelector('.dropMenuLinks');
-let indexOpenDropDown = document.querySelector('.indexOpenDropDown');
-let closeDropDown = document.querySelector('.closeDropDown');
-let heroSection = document.querySelector('.heroSection');
+let dropMenuLinks = document.querySelector(".dropMenuLinks");
+let indexOpenDropDown = document.querySelector(".indexOpenDropDown");
+let closeDropDown = document.querySelector(".closeDropDown");
+let heroSection = document.querySelector(".heroSection");
 
 indexOpenDropDown.onclick = () => {
   dropMenuLinks.style.right = 0;
   heroSection.style.zIndex = `1`;
-}
+};
 
 closeDropDown.onclick = () => {
   dropMenuLinks.style.right = `-2000px`;
   heroSection.style.zIndex = `50`;
-
-}
+};
 
 function subscribe() {
-  var email = document.getElementById('email').value;
-  
+  var email = document.getElementById("email").value;
+
   // Validate email address
   if (!validateEmail(email)) {
-    showPopup('Please enter a valid email address.');
+    showPopup("Please enter a valid email address.");
     return;
   }
-  
+
   // send the email address to the admin
   // For demonstration, let's just show a confirmation message
-  showPopup('You have successfully subscribed with email: ' + email);
+  showPopup("You have successfully subscribed with email: " + email);
 }
 
 function validateEmail(email) {
@@ -35,11 +34,29 @@ function validateEmail(email) {
 }
 
 function showPopup(message) {
-  var popup = document.getElementById('popup');
-  var popuptext = document.getElementById('popuptext');
+  var popup = document.getElementById("popup");
+  var popuptext = document.getElementById("popuptext");
   popuptext.textContent = message;
-  popup.classList.add('show');
-  setTimeout(function() {
-    popup.classList.remove('show');
+  popup.classList.add("show");
+  setTimeout(function () {
+    popup.classList.remove("show");
   }, 3000); // Hide popup after 3 seconds
+}
+
+const anchor = document.getElementById("scrollToMentalHealth");
+
+if (anchor) {
+  anchor.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const targetId = this.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
 }
